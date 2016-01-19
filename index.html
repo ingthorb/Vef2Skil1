@@ -14,10 +14,19 @@
 </head>
 <body>	
 	<div id="toolbar">
-			<input type="radio" name="tool" id="squarebutton" value="square"></input><label for="squarebutton">Square</label>
+	<label>Pick your tool:
+			<select id="toolopt">
+			<option selected  name ="tool" id="squareoption" value="square" for="squareoption">Square</option>
+			<option  name = "tool" id="circleoption" value="circle" for="circleoption">Circle</option>
+			<option  name = "tool" id="textoption" value="text" for="textoption">Text</option>
+			<option  name = "tool" id="lineoption" value="line" for="lineption">Line</option>
+			<option  name = "tool" id="penoption" value="pen" for="penoption">Pen</option>
+			<!--<input type="radio" name="tool" id="squarebutton" value="square"></input><label for="squarebutton">Square</label>-->
 			<input type="color" name="color" id="color" value="#ff0000"></input>
 			<input type="button" name="clearbutton" id="clearbutton" value="clear"></input>
+			</select>
+	</label>
 	</div>
-	<canvas id="canvas" height="500" width="500"></canvas>
+	<canvas id="canvas" height="700" width="700"></canvas>
 </body>
 </html>
