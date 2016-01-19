@@ -94,7 +94,10 @@ var app = null;
 $(function() {
 	// Wire up events
 	app = new App('#canvas');
-	$('#toolopt').click(function(){app.shapeConstructor = Square;});
+	//$('#toolopt').change(function(){
+	//console.log($(this).val());
+	//app.shapeConstructor = ($(this).val())});
+	$('#squarebutton').click(function(){app.shapeConstructor = Square;});
 	$('#penbutton').click(function(){app.shapeConstructor = Pen;});
 	$('#clearbutton').click(function(){app.clear()});
 	$('#color').change(function(){app.setColor($(this).val())});
