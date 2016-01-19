@@ -94,11 +94,35 @@ var app = null;
 $(function() {
 	// Wire up events
 	app = new App('#canvas');
-	//$('#toolopt').change(function(){
-	//console.log($(this).val());
-	//app.shapeConstructor = ($(this).val())});
-	$('#squarebutton').click(function(){app.shapeConstructor = Square;});
-	$('#penbutton').click(function(){app.shapeConstructor = Pen;});
+	$('#toolopt').change(function(){
+	var option = ($(this).val());
+	switch(option){
+		case 'Square':
+			app.shapeConstructor = Square;
+			break;
+		case 'Circle':
+			console.log("It works,Circle");
+			//app.shapeConstructor = Circle;
+			break;
+		case 'Text':
+			console.log("It works,Text");
+			//app.shapeConstructor = Textt;
+			break;
+		case 'Line':
+			console.log("It works, Line");
+			//app.shapeConstructor = Line;
+			break;
+		case 'Pen':
+			console.log("It works,Pen");
+			//app.shapeConstructor = Pen;
+			break;
+		default:
+			console.log("Ok");
+				}
+	});
+	//$('#squarebutton').click(function(){app.shapeConstructor = Square;});
+	//$('#circlebutton').click(function(){app.shapeConstructor = Circle;});
+	//$('#penbutton').click(function(){app.shapeConstructor = Pen;});
 	$('#clearbutton').click(function(){app.clear()});
 	$('#color').change(function(){app.setColor($(this).val())});
 });

@@ -1,4 +1,4 @@
-var Pen = = Shape.extend({
+var Pen  = Shape.extend({
 
 
 })
