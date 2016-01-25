@@ -1,14 +1,11 @@
 var Shape = Base.extend({
 
-	constructor:function(x,y,col,type,lineWidth,name,clickX,clickY,clickDrag) {
+	constructor:function(x,y,col,type,tFont,lineWidth,pText,name) {
         this.name = name;
         this.pos = null;
         this.size = new Point(0,0);
         this.color = color;
         this.selected = false;
-        this.clickX = clickX;
-        this.clickY = clickY;
-        this.clickDrag = clickDrag;
         this.x = x;
         this.y = y;
         this.endX = x;
@@ -16,6 +13,10 @@ var Shape = Base.extend({
         this.type = type;
         var widthID = document.getElementById("lwidth");
         this.lineWidth = widthID.options[widthID.selectedIndex].value;
+        var textID = document.getElementById("tfont");
+        this.tFont = textID.options[textID.selectedIndex].value;
+        this.pText = document.getElementById("pictureText").value;
+        this.fSize = document.getElementById("fontSize").value;
     },
  
     findSizeOfSelected: function() {

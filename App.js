@@ -96,6 +96,10 @@ var app = null;
 $(function() {
 	// Wire up events
 	app = new App('#canvas');
+	window.onload = function()
+	{
+		app.shapeConstructor = Rectangle;
+	}
 	$('#toolopt').change(function(){
 	var option = ($(this).val());
 	switch(option){
@@ -106,23 +110,21 @@ $(function() {
 			app.shapeConstructor = Square;
 			break;
 		case 'Circle':
-			console.log("It works,Circle");
+			//console.log("It works,Circle");
 			app.shapeConstructor = Circle;
 			break;
 		case 'Text':
-			console.log("It works,Text");
-			//app.shapeConstructor = Textt;
+			//console.log("It works,Text");
+			app.shapeConstructor = Textt;
 			break;
 		case 'Line':
-			console.log("It works, Line");
+			//console.log("It works, Line");
 			app.shapeConstructor = Line;
 			break;
 		case 'Pen':
-			console.log("It works,Pen");
+			//console.log("It works,Pen");
 			app.shapeConstructor = Pen;
 			break;
-		default:
-			console.log("Ok");
 				}
 	});
 	//$('#squarebutton').click(function(){app.shapeConstructor = Square;});

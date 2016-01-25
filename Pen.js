@@ -1,16 +1,8 @@
 var Pen  = Shape.extend({
 
 	constructor: function(){
-		var clickX = new Array();
-		var clickY = new Array();
-		var clickDrag = new Array();
+		//Nota array
 		this.base("Pen");
-	},
-	AddClick: function(x,y,drag)
-	{
-		clickX.push(x);
-		clickY.push(y);
-		clickDrag.push(drag);	
 	},
 
 	draw: function(canvas)
@@ -21,7 +13,7 @@ var Pen  = Shape.extend({
 	},
 	drawing: function(point)
 	{
-		for(var i = 0; i < clickY.length(); i++)
+		for(var i = 0; i < this.pos.x.length(); i++)
 		{
 			//canvas.beginPath();
 			if(clickDrag[i] && i) {

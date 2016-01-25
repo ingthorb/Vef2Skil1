@@ -27,9 +27,9 @@
 			<option  name = "tool" id="textoption" value="Text" for="textoption">Text</option>
 			<option  name = "tool" id="lineoption" value="Line" for="lineption">Line</option>
 			<option  name = "tool" id="penoption" value="Pen" for="penoption">Pen</option>
-			<input type="color" name="color" id="color" value="#ff0000"></input>
-			<input type="button" name="clearbutton" id="clearbutton" value="clear"></input>
 			</select>
+			Pick a color: <input type="color" name="color" id="color" value="#ff0000"></input>
+			<input type="button" name="clearbutton" id="clearbutton" value="clear"></input>
 	</label>
 			<label for="lwidth">Width size: </label>
 			<select name="lineWidth" id = "lwidth">
@@ -44,7 +44,26 @@
 		        <option>9</option>
 		        <option>10</option>
 			</select>
+			<label for="tfont">Font: </label>
+			<select name="textfont" id = "tfont">
+		        <option>Arial</option>
+		        <option>Arial Black</option>
+		        <option>Comic Sans</option>
+		        <option>Courier New</option>
+		        <option>Georgia</option>
+		        <option>Impact</option>
+		        <option>Lucida Console</option>
+		        <option>Tahoma</option>	        
+			</select>
+			<form action="action_page.php">
+			Font size: <input type="number" name="fontsize" min="1" max= "99" id="fontSize">
+			</form>
 	</div>
 	<canvas id="canvas" height="700" width="700"></canvas>
+	<div id="textOption"> 
+	<form action="demo_form.asp">
+	Input text: <input type="text" name="inputText" maxlength="100" id="pictureText">
+	</form>
+	</div>
 </body>
 </html>
