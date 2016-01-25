@@ -7,7 +7,8 @@ function App(canvasSelector) {
 	self.drawingStart = function(e) {	
 		var startPos = self.getEventPoint(e);
 		var shape = new self.shapeConstructor(startPos,self.color);
-
+		shape.pos = startPos;
+		shape.color = self.color;
 		shape.startDrawing(startPos,self.canvasContext);
 		startPos.log('drawing start');
 	
@@ -79,6 +80,7 @@ function App(canvasSelector) {
 			mousedown:self.mousedown
 		});
 		self.shapeConstructor = null;
+		//Get element
 		self.canvasContext = canvas.getContext("2d");
 		self.shapes = new Array();
 		
@@ -97,12 +99,15 @@ $(function() {
 	$('#toolopt').change(function(){
 	var option = ($(this).val());
 	switch(option){
+		case 'Rectangle':
+			app.shapeConstructor = Rectangle;
+			break;
 		case 'Square':
 			app.shapeConstructor = Square;
 			break;
 		case 'Circle':
 			console.log("It works,Circle");
-			//app.shapeConstructor = Circle;
+			app.shapeConstructor = Circle;
 			break;
 		case 'Text':
 			console.log("It works,Text");
@@ -110,11 +115,11 @@ $(function() {
 			break;
 		case 'Line':
 			console.log("It works, Line");
-			//app.shapeConstructor = Line;
+			app.shapeConstructor = Line;
 			break;
 		case 'Pen':
 			console.log("It works,Pen");
-			//app.shapeConstructor = Pen;
+			app.shapeConstructor = Pen;
 			break;
 		default:
 			console.log("Ok");

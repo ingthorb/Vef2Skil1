@@ -1,18 +1,19 @@
 var Square = Shape.extend({
 
-	constructor: function(pos,color) {
-		this.base("Square",pos,color);
+	constructor: function() {
+		this.base("Square");
 	},
 
 	draw: function(canvas) {
 		canvas.strokeStyle = this.color;
+		canvas.lineWidth = this.lineWidth;
 		canvas.strokeRect(this.pos.x, this.pos.y, this.size.x, this.size.y);
 		this.base(canvas);
 	},
 
 	drawing:function(point) {
 		this.size.x = point.x - this.pos.x;
-		this.size.y = point.y - this.pos.y;
+		this.size.y = point.x - this.pos.x;
 	},
 
 	added: function(canvas) {
