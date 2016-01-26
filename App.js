@@ -49,6 +49,7 @@ function App(canvasSelector) {
 
 	self.mousedown = function(e) {
 		if(self.shapeConstructor != null) {
+
 			self.drawingStart(e);
 		} else {
 		}
@@ -65,9 +66,26 @@ function App(canvasSelector) {
 	
 	self.clear = function() {
 		self.shapes = [];
+		self.redoArr = [];
 		self.redraw();
 	}
 	
+	self.undo = function() {
+		var lastMove = self.shapes.pop()
+		self.redoArr.push(lastMove);
+		self.redraw();	
+	}
+
+	self.redrawRedo = function() {
+		var redoItem = self.redoArr.pop();
+		self.shapes.push(redoItem);
+		redoItem.draw(self.canvasContext);
+	}
+
+	self.redo = function() {
+		self.redrawRedo();
+	}
+
 	self.setColor = function(color) {
 		self.color = color;
 	}
@@ -83,6 +101,7 @@ function App(canvasSelector) {
 		//Get element
 		self.canvasContext = canvas.getContext("2d");
 		self.shapes = new Array();
+		self.redoArr = new Array();
 		
 		// Set defaults
 		self.color = '#ff0000';	
@@ -110,23 +129,21 @@ $(function() {
 			app.shapeConstructor = Square;
 			break;
 		case 'Circle':
-			//console.log("It works,Circle");
 			app.shapeConstructor = Circle;
 			break;
 		case 'Text':
-			//console.log("It works,Text");
 			app.shapeConstructor = Textt;
 			break;
 		case 'Line':
-			//console.log("It works, Line");
 			app.shapeConstructor = Line;
 			break;
 		case 'Pen':
-			//console.log("It works,Pen");
 			app.shapeConstructor = Pen;
 			break;
 				}
 	});
 	$('#clearbutton').click(function(){app.clear()});
+	$('#undobutton').click(function(){app.undo()});
+	$('#redobutton').click(function(){app.redo()});
 	$('#color').change(function(){app.setColor($(this).val())});
 });
