@@ -12,10 +12,6 @@ var Textt = Shape.extend({
 			fontoption = "Arial";
 		}
 		var fsize = String(this.fSize);
-		if(fsize == "")
-		{
-			fsize = "20";
-		}
 		var sz = fsize + "px " + fontoption;
 		canvas.font = sz;
 		canvas.strokeStyle = this.color;

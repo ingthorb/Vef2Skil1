@@ -127,9 +127,6 @@ $(function() {
 			break;
 				}
 	});
-	//$('#squarebutton').click(function(){app.shapeConstructor = Square;});
-	//$('#circlebutton').click(function(){app.shapeConstructor = Circle;});
-	//$('#penbutton').click(function(){app.shapeConstructor = Pen;});
 	$('#clearbutton').click(function(){app.clear()});
 	$('#color').change(function(){app.setColor($(this).val())});
 });
