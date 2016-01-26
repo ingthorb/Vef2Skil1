@@ -73,7 +73,8 @@ function App(canvasSelector) {
 	self.undo = function() {
 		var lastMove = self.shapes.pop()
 		self.redoArr.push(lastMove);
-		self.redraw();	
+		self.redraw();
+		self.undoCount += 1;
 	}
 
 	self.redrawRedo = function() {
@@ -83,7 +84,10 @@ function App(canvasSelector) {
 	}
 
 	self.redo = function() {
-		self.redrawRedo();
+		if(self.undoCount > 0) {
+			self.redrawRedo();
+			self.undoCount -= 1;			
+		}
 	}
 
 	self.setColor = function(color) {
@@ -102,7 +106,7 @@ function App(canvasSelector) {
 		self.canvasContext = canvas.getContext("2d");
 		self.shapes = new Array();
 		self.redoArr = new Array();
-		
+		self.undoCount = 0;
 		// Set defaults
 		self.color = '#ff0000';	
 		// TODO: Set sensible defaults ...
