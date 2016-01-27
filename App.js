@@ -68,13 +68,16 @@ function App(canvasSelector) {
 		self.shapes = [];
 		self.redoArr = [];
 		self.redraw();
+		self.undoCount = 0;
 	}
 	
 	self.undo = function() {
+		if(self.shapes.length > 0) {
 		var lastMove = self.shapes.pop()
 		self.redoArr.push(lastMove);
 		self.redraw();
 		self.undoCount += 1;
+		}
 	}
 
 	self.redrawRedo = function() {
