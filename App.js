@@ -23,7 +23,7 @@ function App(canvasSelector) {
 
 		var drawingStop = function(e) {
 			var pos = self.getEventPoint(e);
-
+			var isDrag = false;
 			shape.stopDrawing(pos,self.canvasContext);
 
 			pos.log('drawing stop')
@@ -46,9 +46,24 @@ function App(canvasSelector) {
 			mouseup:drawingStop
 		});	
 	}
-
+	self.ifInShape = function(e)
+	{
+		console.log("Trololo");
+		if(isInShape(self.getEventPoint.x, self.getEventPoint.y))
+		{
+			console.log("Sucess!");
+		}
+	}
 	self.mousedown = function(e) {
+		//Ef það er selected þá gerum við þetta annars hitt
+		//Geteventpoint er get mouse
+		//Ætla að athuga núna hvort ég sé staddur inní einhverju shapei
+		//Ef ég er staddur inní því þá ætla ég að byrja á því að skila einhverju dóti til að láta það virka
+		//Spurning um að hafa select takka eða eitthvað til að geta ákveðið hvort hann er að teikna inní eða vill færa
+		//console.log("Trololo");
+		//self.ifInShape(e);
 		if(self.shapeConstructor != null) {
+
 
 			self.drawingStart(e);
 		} else {
@@ -56,7 +71,17 @@ function App(canvasSelector) {
 
 		self.redraw();
 	}
+	/*self.isInShape = function(e)
+	{
+		var x,y,bb;
+		bb = canvas.getBoundingClientRect();
+		x = (e.x - bb.left) * (canvas.width/bb.width);
+		y = (e.y - bb.top) * (canvas.height / bb.height);
+		return e.isPointInPath(x,y);
 
+	}*/
+
+	
 	self.redraw = function() {
 		self.canvasContext.clearRect(0, 0, self.canvasContext.canvas.width, self.canvasContext.canvas.height);
 		for(var i = 0; i < self.shapes.length; i++) {
@@ -126,25 +151,26 @@ $(function() {
 	{
 		app.shapeConstructor = Rectangle;
 	}
-	$('#toolopt').change(function(){
-	var option = ($(this).val());
+	$('#toolopt li').click(function(){
+	var option = ($(this).index());
+		console.log(option);
 	switch(option){
-		case 'Rectangle':
+		case 0:
 			app.shapeConstructor = Rectangle;
 			break;
-		case 'Square':
+		case 1:
 			app.shapeConstructor = Square;
 			break;
-		case 'Circle':
+		case 2:
 			app.shapeConstructor = Circle;
 			break;
-		case 'Text':
+		case 3:
 			app.shapeConstructor = Textt;
 			break;
-		case 'Line':
+		case 4:
 			app.shapeConstructor = Line;
 			break;
-		case 'Pen':
+		case 5:
 			app.shapeConstructor = Pen;
 			break;
 				}

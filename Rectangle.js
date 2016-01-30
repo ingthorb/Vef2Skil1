@@ -14,7 +14,6 @@ var Rectangle = Shape.extend({
 		this.size.x = point.x - this.pos.x;
 		this.size.y = point.y - this.pos.y;
 	},
-
 	added: function(canvas) {
 		if(this.size.x < 0) {
 			this.pos.x += this.size.x;

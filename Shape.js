@@ -18,7 +18,7 @@ var Shape = Base.extend({
         this.pText = document.getElementById("pictureText").value;
         this.fSize = document.getElementById("fontSize").value;
     },
- 
+    //Býr til nýjan kassa utan um hvert element
     findSizeOfSelected: function() {
         var minX = Math.min(this.x, this.endX);
         var minY = Math.min(this.y, this.endY);
@@ -31,7 +31,18 @@ var Shape = Base.extend({
 			// show selection
 		}
 	},
+    isInShape:function(x,y)
+    {
+        var x,y,size;
+        size = canvas.getBoundingClientRect();
+        x = (point.x - size.left) * (canvas.width / size.width);
+        y = (point.y - size.top) * (canvas.height / size.height);
+        console.log(x);
+        return canvas.isPointInPath(x,y);
+        //ispointinpath skilar true ef að músin er inní þessum ákveðna path s.s. x og y
+        //Þyrftum að reikna út x og y
 
+    },
 	startDrawing:function(point) {
 
 	},
