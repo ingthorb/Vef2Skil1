@@ -152,6 +152,7 @@ $(function() {
 		    }
 		    reader.readAsDataURL(e.target.files[0]);
 	}),
+
 	$('#toolopt').change(function(){
 	var option = ($(this).val());
 	switch(option){
@@ -173,7 +174,7 @@ $(function() {
 		case 'Pen':
 			app.shapeConstructor = Pen;
 			break;
-				}
+		}
 	});
 	$('#clearbutton').click(function(){app.clear()});
 	$('#undobutton').click(function(){app.undo()});

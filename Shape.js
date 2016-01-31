@@ -26,6 +26,7 @@ var Shape = Base.extend({
         var height = Math.abs(this.endY - this.y);
         return new Rect(minX, minY, width, height);
     },
+    
 	draw:function(canvas) {		
 		if ( this.selected === true ) {
 			// show selection

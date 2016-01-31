@@ -27,5 +27,4 @@ var Square = Shape.extend({
 			this.size.y = Math.abs(this.size.y);
 		}
 	},	
-
 });

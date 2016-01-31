@@ -18,9 +18,4 @@ var Textt = Shape.extend({
 		canvas.strokeText(this.pText,this.pos.x,this.pos.y);
 
 	},
-	drawing: function(point)
-	{
-
-	},
-
 });

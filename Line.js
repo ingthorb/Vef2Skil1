@@ -4,6 +4,7 @@ var Line =  Shape.extend({
 		var startY = 0;
 		this.base("Line");
 	},
+
 	draw: function(canvas)
 	{
 		startX = this.pos.x;
@@ -22,9 +23,7 @@ var Line =  Shape.extend({
 
 	drawing: function(point)
 	{
-		//What to do
 		this.size.x = point.x;
 		this.size.y = point.y;
 	}, 
-
 });

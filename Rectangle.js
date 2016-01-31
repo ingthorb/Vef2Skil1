@@ -1,4 +1,5 @@
 var Rectangle = Shape.extend({
+	
 	constructor: function() {
 		this.base("Rectangle");
 	},
@@ -26,5 +27,4 @@ var Rectangle = Shape.extend({
 			this.size.y = Math.abs(this.size.y);
 		}
 	},	
-
 })
