@@ -73,6 +73,9 @@ function App(canvasSelector) {
 		//Default size of the canvas
 		canvas.width = 700;
 		canvas.height = 700;
+		document.getElementById('canvaswidth').value = '700';
+		document.getElementById('canvasheight').value = '700';
+
 	}
 	
 	self.undo = function() {
@@ -107,6 +110,23 @@ function App(canvasSelector) {
 	self.setColor = function(color) {
 		self.color = color;
 	}	
+
+	self.changeCanvasResolution = function() {
+
+		var newWidth = document.getElementById("canvaswidth").value;
+		var newHeight = document.getElementById("canvasheight").value;
+		if(newWidth > 1080 || newWidth < 0){
+			alert("Width must be between 0 and 1080");
+		}
+		else if(newHeight > 1920 || newHeight < 0){
+			alert("Height must be between 0 and 1920");
+		}
+		else {
+			canvas.width = newWidth;
+			canvas.height = newHeight;
+			self.redraw();
+		}
+	}
 
 	self.init = function() {
 		// Initialize App	
@@ -184,6 +204,6 @@ $(function() {
 	$('#redobutton').click(function(){app.redo()});
 	$('#color').change(function(){app.setColor($(this).val())});
 	$('#saveButton').click(function(){app.saveImage()});
-
+	$('#canvasResolution').click(function(){app.changeCanvasResolution()});
 
 });

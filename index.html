@@ -31,7 +31,8 @@
 			<option name="tool" id="selectoption" value="Select" for="selectoption">Select</option>
 			<option name="tool" id="eraseroption" value="Eraser" for="eraseroption">Eraser</option>
 			</select>
-			Pick a color: <input type="color" name="color" id="color" value="#ff0000"></input>
+			Pick a color: 
+			<input type="color" name="color" id="color" value="#ff0000"></input>
 			<input type="button" name="clearbutton" id="clearbutton" value="clear"></input>
 			<input type="button" name="undo" id="undobutton" value="undo"></input>
 			<input type="button" name="redo" id="redobutton" value="redo"></input>
@@ -61,17 +62,28 @@
 		        <option>Tahoma</option>	        
 			</select>
 			<form action="action_page.php">
-			Font size: <input type="number" name="fontsize" min="1"  id="fontSize" value="20">
+				Font size: <input type="number" name="fontsize" min="1"  id="fontSize" value="20">
 			</form>
+
 			<label>Upload an image:</label><br/>
 			<input type="file" id="loadImg" name="loadImg"/><br/>
 			<button id="saveButton">Save image</button>
 			</div>
+			<div>
+				<label>Canvas width:</label>
+				<input type="number" name="canvaswidth" min="1" max="1080" id="canvaswidth" value="700">
+				<label>Canvas height:</label>
+				<input type="number" name="canvasheight" min="1"  max="1920" id="canvasheight" value="700">
+				<button id="canvasResolution">Resize</button>
+			</div>
 	<canvas id="canvas" height="700" width="700" background="red"></canvas>
 	<div id="textOption"> 
 	<form action="demo_form.asp">
-	Input text: <input type="text" name="inputText" maxlength="100" id="pictureText">
+		Input text: 
+		<input type="text" name="inputText" maxlength="100" id="pictureText">
 	</form>
+
+
 	</div>
 </body>
 </html>
