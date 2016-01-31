@@ -71,9 +71,9 @@ function App(canvasSelector) {
 		self.redraw();
 		self.undoCount = 0;
 		//Default size of the canvas
-		canvas.width = 700;
+		canvas.width = 1000;
 		canvas.height = 700;
-		document.getElementById('canvaswidth').value = '700';
+		document.getElementById('canvaswidth').value = '1000';
 		document.getElementById('canvasheight').value = '700';
 
 	}

@@ -1,10 +1,13 @@
-	<html>
-	<head>
-		<title>JS-Draw</title>
-		<style>
-		#toolbar {background-color:silver;}
-		#canvas {border:1px solid blue;display:block;}
-		</style>
+	<!DOCTYPE html>
+<html>
+<head>
+	<title>JS-Draw</title>
+	<link rel="stylesheet" type="text/css" href="css.css"/>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="base.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 		<script type="text/javascript" src="app.js"></script>
@@ -21,7 +24,7 @@
 	<body>	
 		<div id="toolbar">
 			<label>Pick your tool:
-				<select id="toolopt">
+				<select id="toolopt" class="form-control">
 					<option name="tool" id="rectangle" value="Rectangle" for="rectangleoption">Rectangle</option>
 					<option name="tool" id="square" value="Square" for="squareoption">Square</option>
 					<option name="tool" id="circleoption" value="Circle" for="circleoption">Circle</option>
@@ -30,14 +33,23 @@
 					<option name="tool" id="penoption" value="Pen" for="penoption">Pen</option>
 					<option name="tool" id="eraseroption" value="Eraser" for="eraseroption">Eraser</option>
 				</select>
+				<div>
 				Pick a color: 
 				<input type="color" name="color" id="color" value="#ff0000"></input>
-				<input type="button" name="clearbutton" id="clearbutton" value="clear"></input>
-				<input type="button" name="undo" id="undobutton" value="undo"></input>
-				<input type="button" name="redo" id="redobutton" value="redo"></input>
+				</div>
+				<div>
+				<input type="button" name="clearbutton" id="clearbutton" value="Clear"></input>
+				</div>
+				<div>
+				<input type="button" name="undo" id="undobutton" value="Undo"></input>
+				</div>
+				<div>
+				<input type="button" name="redo" id="redobutton" value="Redo"></input>
+				</div>
 			</label>
+			<div>
 			<label for="lwidth">Width size: </label>
-			<select name="lineWidth" id="lwidth">
+			<select name="lineWidth" id="lwidth" for="lwidth" class="form-control">
 				<option>1</option>
 				<option>2</option>
 				<option>3</option>
@@ -48,14 +60,22 @@
 				<option>8</option>
 				<option>9</option>
 				<option>10</option>
+				<option>11</option>
+				<option>12</option>
+				<option>13</option>
+				<option>14</option>
+				<option>15</option>
 			</select>
-			<div id="fontText">
+			</div>
+			<div >
 				<form action="demo_form.asp" style="margin-bottom:0">
 					<label>Input text:</label> 
 					<input type="text" name="inputText" maxlength="100" id="pictureText">
 				</form>
-				<label for="tfont">Font: </label>
-				<select name="textfont" id = "tfont">
+			</div>
+			<div id="fontText" class = "form-group">
+				<label id="font" for="tfont">Font: </label>
+				<select name="textfont" id = "tfont" class="form-control"class="form-control">
 					<option>Arial</option>
 					<option>Arial Black</option>
 					<option>Comic Sans</option>
@@ -73,17 +93,15 @@
 			<input type="file" id="loadImg" name="loadImg"/><br/>
 			<button id="saveButton">Save image</button>
 		</div>
-		<div>
+		<div id="canvassize">
 			<label>Canvas height:</label>
 			<input type="number" name="canvasheight" min="1" max="1080" id="canvasheight" value="700">
 			<label>Canvas width:</label>
-			<input type="number" name="canvaswidth" min="1"  max="1920" id="canvaswidth" value="700">
+			<input type="number" name="canvaswidth" min="1"  max="1920" id="canvaswidth" value="1000">
 			<button id="canvasResolution">Resize</button>
 		</div>
-		<canvas id="canvas" height="700" width="700" background="red"></canvas>
+		<canvas id="canvas" height="700" width="1000" background="red"></canvas>
 		<div id="textOption"> 
-
-
 
 		</div>
 	</body>
