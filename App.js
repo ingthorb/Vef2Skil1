@@ -173,6 +173,9 @@ $(function() {
 			break;
 		case 'Pen':
 			app.shapeConstructor = Pen;
+			break;		
+		case 'Eraser':
+			app.shapeConstructor = Eraser;
 			break;
 		}
 	});
