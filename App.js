@@ -113,13 +113,13 @@ function App(canvasSelector) {
 
 	self.changeCanvasResolution = function() {
 
-		var newWidth = document.getElementById("canvaswidth").value;
 		var newHeight = document.getElementById("canvasheight").value;
-		if(newWidth > 1080 || newWidth < 0){
-			alert("Width must be between 0 and 1080");
+		var newWidth = document.getElementById("canvaswidth").value;
+		if(newHeight > 1080 || newHeight < 0){
+			alert("Height must be between 0 and 1080");
 		}
-		else if(newHeight > 1920 || newHeight < 0){
-			alert("Height must be between 0 and 1920");
+		else if(newWidth > 1920 || newWidth < 0){
+			alert("Width must be between 0 and 1920");
 		}
 		else {
 			canvas.width = newWidth;

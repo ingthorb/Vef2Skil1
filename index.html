@@ -1,89 +1,91 @@
-<html>
-<head>
-	<title>JS-Draw</title>
-	<style>
+	<html>
+	<head>
+		<title>JS-Draw</title>
+		<style>
 		#toolbar {background-color:silver;}
 		#canvas {border:1px solid blue;display:block;}
-	</style>
-	<script type="text/javascript" src="base.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-	<script type="text/javascript" src="app.js"></script>
-	<script type="text/javascript" src="point.js"></script>
-	<script type="text/javascript" src="shape.js"></script>
-	<script type="text/javascript" src="square.js"></script>
-	<script type="text/javascript" src="circle.js"></script>
-	<script type="text/javascript" src="rectangle.js"></script>
-	<script type="text/javascript" src="pen.js"></script>
-	<script type="text/javascript" src="line.js"></script>
-	<script type="text/javascript" src="text.js"></script>	
-	<script type="text/javascript" src="eraser.js"></script>	
-</head>
-<body>	
-	<div id="toolbar">
-	<label>Pick your tool:
-			<select id="toolopt">
-			<option name="tool" id="rectangle" value="Rectangle" for="rectangleoption">Rectangle</option>
-			<option name="tool" id="square" value="Square" for="squareoption">Square</option>
-			<option name="tool" id="circleoption" value="Circle" for="circleoption">Circle</option>
-			<option name="tool" id="textoption" value="Text" for="textoption">Text</option>
-			<option name="tool" id="lineoption" value="Line" for="lineption">Line</option>
-			<option name="tool" id="penoption" value="Pen" for="penoption">Pen</option>
-			<option name="tool" id="selectoption" value="Select" for="selectoption">Select</option>
-			<option name="tool" id="eraseroption" value="Eraser" for="eraseroption">Eraser</option>
-			</select>
-			Pick a color: 
-			<input type="color" name="color" id="color" value="#ff0000"></input>
-			<input type="button" name="clearbutton" id="clearbutton" value="clear"></input>
-			<input type="button" name="undo" id="undobutton" value="undo"></input>
-			<input type="button" name="redo" id="redobutton" value="redo"></input>
-	</label>
+		</style>
+		<script type="text/javascript" src="base.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+		<script type="text/javascript" src="point.js"></script>
+		<script type="text/javascript" src="shape.js"></script>
+		<script type="text/javascript" src="square.js"></script>
+		<script type="text/javascript" src="circle.js"></script>
+		<script type="text/javascript" src="rectangle.js"></script>
+		<script type="text/javascript" src="pen.js"></script>
+		<script type="text/javascript" src="line.js"></script>
+		<script type="text/javascript" src="text.js"></script>	
+		<script type="text/javascript" src="eraser.js"></script>	
+	</head>
+	<body>	
+		<div id="toolbar">
+			<label>Pick your tool:
+				<select id="toolopt">
+					<option name="tool" id="rectangle" value="Rectangle" for="rectangleoption">Rectangle</option>
+					<option name="tool" id="square" value="Square" for="squareoption">Square</option>
+					<option name="tool" id="circleoption" value="Circle" for="circleoption">Circle</option>
+					<option name="tool" id="textoption" value="Text" for="textoption">Text</option>
+					<option name="tool" id="lineoption" value="Line" for="lineption">Line</option>
+					<option name="tool" id="penoption" value="Pen" for="penoption">Pen</option>
+					<option name="tool" id="selectoption" value="Select" for="selectoption">Select</option>
+					<option name="tool" id="eraseroption" value="Eraser" for="eraseroption">Eraser</option>
+				</select>
+				Pick a color: 
+				<input type="color" name="color" id="color" value="#ff0000"></input>
+				<input type="button" name="clearbutton" id="clearbutton" value="clear"></input>
+				<input type="button" name="undo" id="undobutton" value="undo"></input>
+				<input type="button" name="redo" id="redobutton" value="redo"></input>
+			</label>
 			<label for="lwidth">Width size: </label>
 			<select name="lineWidth" id="lwidth">
-		        <option>1</option>
-		        <option>2</option>
-		        <option>3</option>
-		        <option>4</option>
-		        <option>5</option>
-		        <option>6</option>
-		        <option>7</option>
-		        <option>8</option>
-		        <option>9</option>
-		        <option>10</option>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+				<option>8</option>
+				<option>9</option>
+				<option>10</option>
 			</select>
-			<label for="tfont">Font: </label>
-			<select name="textfont" id = "tfont">
-		        <option>Arial</option>
-		        <option>Arial Black</option>
-		        <option>Comic Sans</option>
-		        <option>Courier New</option>
-		        <option>Georgia</option>
-		        <option>Impact</option>
-		        <option>Lucida Console</option>
-		        <option>Tahoma</option>	        
-			</select>
-			<form action="action_page.php">
-				Font size: <input type="number" name="fontsize" min="1"  id="fontSize" value="20">
-			</form>
-
+			<div id="fontText">
+				<form action="demo_form.asp" style="margin-bottom:0">
+					<label>Input text:</label> 
+					<input type="text" name="inputText" maxlength="100" id="pictureText">
+				</form>
+				<label for="tfont">Font: </label>
+				<select name="textfont" id = "tfont">
+					<option>Arial</option>
+					<option>Arial Black</option>
+					<option>Comic Sans</option>
+					<option>Courier New</option>
+					<option>Georgia</option>
+					<option>Impact</option>
+					<option>Lucida Console</option>
+					<option>Tahoma</option>	        
+				</select>
+				<form action="action_page.php">
+					Font size: <input type="number" name="fontsize" min="1"  id="fontSize" value="20">
+				</form>
+			</div>
 			<label>Upload an image:</label><br/>
 			<input type="file" id="loadImg" name="loadImg"/><br/>
 			<button id="saveButton">Save image</button>
-			</div>
-			<div>
-				<label>Canvas width:</label>
-				<input type="number" name="canvaswidth" min="1" max="1080" id="canvaswidth" value="700">
-				<label>Canvas height:</label>
-				<input type="number" name="canvasheight" min="1"  max="1920" id="canvasheight" value="700">
-				<button id="canvasResolution">Resize</button>
-			</div>
-	<canvas id="canvas" height="700" width="700" background="red"></canvas>
-	<div id="textOption"> 
-	<form action="demo_form.asp">
-		Input text: 
-		<input type="text" name="inputText" maxlength="100" id="pictureText">
-	</form>
+		</div>
+		<div>
+			<label>Canvas height:</label>
+			<input type="number" name="canvasheight" min="1" max="1080" id="canvasheight" value="700">
+			<label>Canvas width:</label>
+			<input type="number" name="canvaswidth" min="1"  max="1920" id="canvaswidth" value="700">
+			<button id="canvasResolution">Resize</button>
+		</div>
+		<canvas id="canvas" height="700" width="700" background="red"></canvas>
+		<div id="textOption"> 
 
 
-	</div>
-</body>
-</html>
+
+		</div>
+	</body>
+	</html>
