@@ -1,5 +1,6 @@
 function App(canvasSelector) {
 	var self = this;
+
 	self.getEventPoint = function(e) {
 		return new Point(e.pageX - self.canvasOffset.x,e.pageY - self.canvasOffset.y);
 	}
@@ -69,6 +70,9 @@ function App(canvasSelector) {
 		self.redoArr = [];
 		self.redraw();
 		self.undoCount = 0;
+		//Default size of the canvas
+		canvas.width = 700;
+		canvas.height = 700;
 	}
 	
 	self.undo = function() {
@@ -92,10 +96,17 @@ function App(canvasSelector) {
 			self.undoCount -= 1;			
 		}
 	}
+	
+	self.saveImage = function(){
+        var link = document.createElement('a');
+        link.download = "MyImage.png";
+        link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");;
+        link.click();
+	}
 
 	self.setColor = function(color) {
 		self.color = color;
-	}
+	}	
 
 	self.init = function() {
 		// Initialize App	
@@ -113,8 +124,9 @@ function App(canvasSelector) {
 		// Set defaults
 		self.color = '#ff0000';	
 		// TODO: Set sensible defaults ...
+ 
 	}
-	
+ 
 	self.init();
 }
 
@@ -126,6 +138,20 @@ $(function() {
 	{
 		app.shapeConstructor = Rectangle;
 	}
+
+	$('#loadImg').change(function(e){
+		var reader = new FileReader();
+		    reader.onload = function(event){
+		        var img = new Image();
+		        img.onload = function(){ 
+		            canvas.width = img.width;
+		            canvas.height = img.height;
+		            app.canvasContext.drawImage(img,0,0);
+		        }
+		        img.src = event.target.result;
+		    }
+		    reader.readAsDataURL(e.target.files[0]);
+	}),
 	$('#toolopt').change(function(){
 	var option = ($(this).val());
 	switch(option){
@@ -153,4 +179,7 @@ $(function() {
 	$('#undobutton').click(function(){app.undo()});
 	$('#redobutton').click(function(){app.redo()});
 	$('#color').change(function(){app.setColor($(this).val())});
+	$('#saveButton').click(function(){app.saveImage()});
+
+
 });
