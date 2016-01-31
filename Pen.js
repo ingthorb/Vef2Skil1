@@ -1,32 +1,25 @@
-var Pen  = Shape.extend({
+var Pen = Shape.extend({
 
-	constructor: function(){
-		//Nota array
+	constructor: function() {
+		this.pointArr = [];		
 		this.base("Pen");
+
 	},
 
-	draw: function(canvas)
-	{
+	draw: function(canvas) {
+		canvas.strokeStyle = this.color;
+		canvas.lineWidth = this.lineWidth;
 		canvas.beginPath();
-		canvas.closePath();
-		canvas.stroke();
-	},
-	drawing: function(point)
-	{
-		for(var i = 0; i < this.pos.x.length(); i++)
-		{
-			//canvas.beginPath();
-			if(clickDrag[i] && i) {
-				canvas.moveTo(clickX[i-1],click[i-1]);
-			}
-			else
-			{
-				canvas.moveTo(clickX[i]-1,clickY[i]);
-			}
-			canvas.lineTo(clickX[i],clickY[i]);
-			//canvas.closePath();
-			//canvas.stroke();
+		canvas.moveTo(this.pointArr[0].x, this.pointArr[0].y);
+		for (var i = 1; i < this.pointArr.length; i++) {
+			canvas.lineTo(this.pointArr[i].x, this.pointArr[i].y);
 		}
-
+		canvas.stroke();
+		this.base(canvas);
 	},
+
+	drawing:function(point) {
+		this.pointArr.push(point);
+	}
+
 });
