@@ -3,7 +3,6 @@ var Pen = Shape.extend({
 	constructor: function() {
 		this.pointArr = [];		
 		this.base("Pen");
-
 	},
 
 	draw: function(canvas) {
