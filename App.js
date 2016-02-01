@@ -197,6 +197,8 @@ $(function() {
 		case 'Eraser':
 			app.shapeConstructor = Eraser;
 			break;
+		case 'Spray':
+			app.shapeConstructor = Spray;
 		}
 	});
 	$('#clearbutton').click(function(){app.clear()});

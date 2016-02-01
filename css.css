@@ -20,6 +20,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#898989', end
 {
  border:1px solid blue;display:block;
  background: white;
+ cursor: crosshair;
 }
 
 #font
