@@ -128,6 +128,116 @@ function App(canvasSelector) {
 		}
 	}
 
+	self.save = function() {
+		var stringifiedArray = JSON.stringify(self.shapes);
+		var param = { "user": "logi14", 
+			"name": "janlogthor",
+			"content": stringifiedArray,
+			"template": true
+		};
+
+		$.ajax({
+			type: "POST",
+			contentType: "application/json; charset=utf-8",
+			url: "http://whiteboard.apphb.com/Home/Save",
+			data: param,
+			dataType: "jsonp",
+			crossDomain: true,
+			success: function (data) {
+				console.log("saved");				
+			},
+			error: function (xhr, err) {
+				console.log("did not save");				
+
+			}
+		});
+	}
+
+	self.load = function() {
+		var param = { "user": "logi14",
+			"name": "janlogthor",
+			"template": true
+		};
+
+		$.ajax({
+			type: "POST",
+			contentType: "application/json; charset=utf-8",
+			url: "http://whiteboard.apphb.com/Home/GetList",
+			data: param,
+			dataType: "jsonp",
+			crossDomain: true,
+			success: function (data) {
+				var savedID = "";
+				for(var i in data) {
+					savedID += "<option value=" + data[i].ID + ">" + data[i].ID + "</option>";
+				}
+				document.getElementById("loadDrawing").innerHTML = savedID;	
+			},
+			error: function (xhr, err) {
+				console.log("something wrong stuff");				
+			}
+		});
+	}
+
+	self.loadLoad = function(id) {
+		var param = { ID : id,
+		};
+
+		$.ajax({
+			type: "POST",
+			contentType: "application/json; charset=utf-8",
+			url: "http://whiteboard.apphb.com/Home/GetWhiteboard",
+			data: param,
+			dataType: "jsonp",
+			crossDomain: true,
+			success: function (data) {
+				console.log("damn you undefined");
+				var Contents = JSON.parse(data.WhiteboardContents);
+				for(var i = 0; i < Contents.length; i++) {
+
+					if(Contents[i].name === "Rectangle") {
+						var currShape = new Rectangle();
+					}
+					else if(Contents[i].name === "Square") {
+						var currShape = new Square();
+					}
+					else if(Contents[i].name === "Circle") {
+						var currShape = new Circle();
+					}					
+					else if(Contents[i].name === "Text") {
+						var currShape = new Text();
+					}					
+					else if(Contents[i].name === "Line") {
+						var currShape = new Line();
+					}
+					else if(Contents[i].name === "Pen") {
+						var currShape = new Pen();
+					}
+					else if(Contents[i].name === "Spray") {
+						var currShape = new Spray();
+					}
+					else if(Contents[i].name === "Eraser") {
+						var currShape = new Eraser();
+					}
+					currShape.color = Contents[i].color;
+					currShape.lineWidth = Contents[i].lineWidth;
+					currShape.name = Contents[i].name;
+					currShape.pos = Contents[i].pos;
+					currShape.size = Contents[i].size;
+					currShape.tFont = Contents[i].tFont;
+					currShape.pText = Contents[i].pText;
+					currShape.fSize = Contents[i].fSize;
+					self.shapes.push(temp);
+				}
+				self.redraw();		
+
+			},
+			error: function (xhr, err) {
+				console.log("what the actual f");
+			}
+		});
+	}
+
 	self.init = function() {
 		// Initialize App	
 		self.canvas = $(canvasSelector);
@@ -144,7 +254,8 @@ function App(canvasSelector) {
 		// Set defaults
 		self.color = '#ff0000';	
 		// TODO: Set sensible defaults ...
- 
+ 		self.load();
+
 	}
  
 	self.init();
@@ -207,5 +318,8 @@ $(function() {
 	$('#color').change(function(){app.setColor($(this).val())});
 	$('#saveButton').click(function(){app.saveImage()});
 	$('#canvasResolution').click(function(){app.changeCanvasResolution()});
+	$('#saveAjax').click(function(){app.save()});
+	$('#loadBtn').click(function(){app.loadLoad($(this).val())});
+	$('#loadDrawing').change(function(){app.loadLoad($(this).val())});
 
 });

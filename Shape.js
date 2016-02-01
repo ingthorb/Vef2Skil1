@@ -1,8 +1,8 @@
 var Shape = Base.extend({
 
-	constructor:function(x,y,col,type,tFont,lineWidth,pText,name) {
+	constructor:function(x,y,col,type,tFont,lineWidth,pText,name,pos) {
         this.name = name;
-        this.pos = null;
+        this.pos = pos;
         this.size = new Point(0,0);
         this.color = color;
         this.selected = false;
