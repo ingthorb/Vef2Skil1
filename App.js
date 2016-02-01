@@ -227,7 +227,7 @@ function App(canvasSelector) {
 					currShape.tFont = Contents[i].tFont;
 					currShape.pText = Contents[i].pText;
 					currShape.fSize = Contents[i].fSize;
-					self.shapes.push(temp);
+					self.shapes.push(currShape);
 				}
 				self.redraw();		
 
