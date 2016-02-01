@@ -19,6 +19,10 @@ var Pen = Shape.extend({
 
 	drawing:function(point) {
 		this.pointArr.push(point);
-	}
-
+	},
+	
+	stopDrawing:function(point) {
+		this.size.x = point.x;
+		this.size.y = point.y
+	},
 });

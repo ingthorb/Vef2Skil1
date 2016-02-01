@@ -1,21 +1,18 @@
 var Line =  Shape.extend({
 	constructor: function(){
-		var startX = 0;
-		var startY = 0;
+		var x0 = 0;
+		var y0 = 0;
 		this.base("Line");
 	},
 
 	draw: function(canvas)
 	{
-		startX = this.pos.x;
-		startY = this.pos.y;
+		this.x0 = this.pos.x;
+		this.y0 = this.pos.y;
 		canvas.strokeStyle = this.color;
 		canvas.lineWidth = this.lineWidth;
 		canvas.beginPath();
-		//Upphafspunktur
-		canvas.moveTo(this.pos.x,this.pos.y);
-		//fyrri er lengd, seinni er stefna
-		//Endapunktur
+		canvas.moveTo(this.x0, this.y0);
 		canvas.lineTo(this.size.x,this.size.y);
 		canvas.stroke();
 		this.base(canvas);
@@ -26,4 +23,9 @@ var Line =  Shape.extend({
 		this.size.x = point.x;
 		this.size.y = point.y;
 	}, 
+
+	stopDrawing:function(point) {
+		this.size.x = point.x;
+		this.size.y = point.y;
+	},
 });
