@@ -284,32 +284,33 @@ $(function() {
 		    reader.readAsDataURL(e.target.files[0]);
 	}),
 
-	$('#toolopt').change(function(){
-	var option = ($(this).val());
+	$('#toolopt li').click(function(){
+	var option = ($(this).index());
 	switch(option){
-		case 'Rectangle':
+		case 0:
 			app.shapeConstructor = Rectangle;
 			break;
-		case 'Square':
+		case 1:
 			app.shapeConstructor = Square;
 			break;
-		case 'Circle':
+		case 2:
 			app.shapeConstructor = Circle;
 			break;
-		case 'Text':
+		case 3:
 			app.shapeConstructor = Textt;
 			break;
-		case 'Line':
+		case 4:
 			app.shapeConstructor = Line;
 			break;
-		case 'Pen':
+		case 5:
 			app.shapeConstructor = Pen;
 			break;		
-		case 'Eraser':
+		case 6:
+			app.shapeConstructor = Spray;
+			break;
+		case 7:
 			app.shapeConstructor = Eraser;
 			break;
-		case 'Spray':
-			app.shapeConstructor = Spray;
 		}
 	});
 	$('#clearbutton').click(function(){app.clear()});
