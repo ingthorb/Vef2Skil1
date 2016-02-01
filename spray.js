@@ -7,20 +7,24 @@ var Spray = Shape.extend({
 
 	draw: function(canvas)
 	{
-		var particles = 50;
+		var particles = 40;
 		canvas.strokeStyle = this.color;
 		canvas.lineWidth = this.lineWidth;
 		canvas.beginPath();
-
 		for(var i = 0; i < particles; i++)	
 		{
 			var off = this.offset(10);
 			var x_new = this.pos.x + off[0];
 			var y_new = this.pos.y + off[1];
+
 			canvas.fillRect(x_new,y_new,2,2);
 			canvas.stroke();
 		}
 		this.base(canvas);
+	},
+	drawing:function(point)
+	{
+
 	},
 	offset: function(radius)
 	{
