@@ -26,3 +26,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#898989', end
 {
 	 font-weight: bold;
 }
+label {
+    color: white;
+}
