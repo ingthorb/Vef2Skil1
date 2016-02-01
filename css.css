@@ -29,3 +29,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#898989', end
 label {
     color: white;
 }
+.buttons
+{
+	color:black;
+}
+#canvas.active
+{
+	cursor: crosshair;
+}
