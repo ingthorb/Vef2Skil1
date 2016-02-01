@@ -10,11 +10,11 @@ var Spray = Shape.extend({
 	draw: function(canvas)
 	{
 		canvas.fillStyle = this.color;
-		canvas.lineWidth = this.lineWidth;
+	
 		canvas.beginPath();
 		canvas.moveTo(this.pos.x, this.pos.y);
 		for(var i = 0; i < this.sprayArrX.length; i++){
-			canvas.fillRect(this.sprayArrX[i], this.sprayArrY[i],2,2);
+			canvas.fillRect(this.sprayArrX[i], this.sprayArrY[i],1,1);
 		}
 		canvas.stroke();
 		this.base(canvas);
@@ -25,7 +25,7 @@ var Spray = Shape.extend({
 		var particles = 40;
 	 	for (var i = 0; i < particles; i++){
 			var angle = this.offset(0,2*Math.PI);
-			var radius = this.offset(0,15);
+			var radius = this.offset(0,this.lineWidth);
 			var x_new = radius * Math.cos(angle);
 			var y_new = radius * Math.sin(angle);
 			this.sprayArrX.push(point.x + x_new);

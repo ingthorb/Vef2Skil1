@@ -36,5 +36,5 @@ label {
 }
 #canvas.active
 {
-	cursor: crosshair;
+	/*cursor: crosshair;*/
 }
